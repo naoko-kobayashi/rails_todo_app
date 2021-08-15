@@ -5,6 +5,8 @@ ruby '2.6.3'
 
 gem 'mysql2'
 gem 'rename'
+gem 'factory_bot'
+gem 'rspec-rails'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'rails', '~> 6.1.4'
