@@ -1,0 +1,473 @@
+# https://github.com/bbatsov/rubocop/tree/master/manual
+require:
+  - rubocop-rails
+  - rubocop-rspec
+AllCops:
+  NewCops: enable
+  RubyInterpreters:
+    - ruby
+    - macruby
+    - rake
+    - jruby
+    - rbx
+  Include:
+    - '**/*.rb'
+    - '**/*.arb'
+    - '**/*.axlsx'
+    - '**/*.builder'
+    - '**/*.fcgi'
+    - '**/*.gemfile'
+    - '**/*.gemspec'
+    - '**/*.god'
+    - '**/*.jb'
+    - '**/*.jbuilder'
+    - '**/*.mspec'
+    - '**/*.opal'
+    - '**/*.pluginspec'
+    - '**/*.podspec'
+    - '**/*.rabl'
+    - '**/*.rake'
+    - '**/*.rbuild'
+    - '**/*.rbw'
+    - '**/*.rbx'
+    - '**/*.ru'
+    - '**/*.ruby'
+    - '**/*.spec'
+    - '**/*.thor'
+    - '**/*.watchr'
+    - '**/.irbrc'
+    - '**/.pryrc'
+    - '**/buildfile'
+    - '**/config.ru'
+    - '**/Appraisals'
+    - '**/Berksfile'
+    - '**/Brewfile'
+    - '**/Buildfile'
+    - '**/Capfile'
+    - '**/Cheffile'
+    - '**/Dangerfile'
+    - '**/Deliverfile'
+    - '**/Fastfile'
+    - '**/*Fastfile'
+    - '**/Gemfile'
+    - '**/Guardfile'
+    - '**/Jarfile'
+    - '**/Mavenfile'
+    - '**/Podfile'
+    - '**/Puppetfile'
+    - '**/Rakefile'
+    - '**/Snapfile'
+    - '**/Thorfile'
+    - '**/Vagabondfile'
+    - '**/Vagrantfile'
+  Exclude:
+    - '.circleci/**/*'
+    - '.github/**/*'
+    - '.storybook/**/*'
+    - 'bin/*'
+    - 'config/**/*'
+    - 'db/**/*'
+    - 'digdag/**/*'
+    - 'docker/**/*'
+    - 'docs/**/*'
+    - 'frontend/**/*'
+    - 'jenkinsfiles/**/*'
+    - 'terraform/**/*'
+    - 'tmp/**/*'
+    - 'vendor/**/*'
+    - 'webpack/**/*'
+    - 'node_modules/**/*'
+    - 'lib/tasks/develop/generate_article.rake'
+    - 'lib/tasks/setup/capacity_bug_finder.rake'
+    - 'lib/tasks/setup/fix_kanagawa_capacity_bug.rake'
+    - 'lib/tasks/setup/setup_kagawa_facilities.rake'
+    - 'lib/tasks/pick_picture_id_from_article_html.rake'
+    - 'lib/tasks/setup/import_jojoen/*'
+    - 'lib/tasks/import_wamnet.rake'
+    - '.git/**/*'
+    - 'out/**/*'
+    - 'Dangerfile'
+    - 'app/controllers/administer/jojoen_controller.rb'
+    - 'app/models/jojoen_facility_use_case.rb'
+    - 'app/serializers/k_use_case_serializer.rb'
+    - 'app/models/facility.rb' # TODO: new_format?メソッドを消すときに消す. 絶対. 絶対.
+    - 'app/feed_generator/offerbox_feed_generator.rb'
+  TargetRubyVersion: 2.7
+  DisplayCopNames: true
+
+Layout/HashAlignment:
+  EnforcedHashRocketStyle: table
+  EnforcedColonStyle: table
+
+Layout/LineLength:
+  Max: 130
+  Exclude:
+    - 'app/models/csv_generator.rb'
+    - 'app/decorators/keizoku_decorator.rb'
+    - 'app/controllers/concerns/footer_settable.rb'
+    - 'lib/tasks/change_works_inquiry_setting_tel.rake'
+    - 'lib/tasks/develop/generate_contracted_facility.rake'
+    - 'lib/tasks/develop/generate_twilio_test_facility.rake'
+    - 'lib/tasks/setup/generate_ikou_program_tag_industry_occupation.rake'
+    - 'spec/models/inquiry_spec.rb'
+
+Layout/MultilineMethodCallIndentation:
+  EnforcedStyle: indented_relative_to_receiver
+  IndentationWidth: 2
+
+Layout/SpaceAroundMethodCallOperator:
+  Enabled: true
+
+Layout/SpaceInsideBlockBraces:
+  Enabled: true
+
+Layout/EmptyLinesAroundAttributeAccessor:
+  Enabled: true
+
+Lint/SuppressedException:
+  Exclude:
+    - 'spec/models/twilio_log_spec.rb'
+
+Lint/ConstantDefinitionInBlock:
+  Enabled: false
+
+Lint/RaiseException:
+  Enabled: true
+
+Lint/StructNewOverride:
+  Enabled: true
+
+Lint/DeprecatedOpenSSLConstant:
+  Enabled: true
+
+Lint/MixedRegexpCaptureTypes:
+  Enabled: true
+
+Lint/DuplicateElsifCondition:
+  Enabled: true
+
+Lint/BinaryOperatorWithIdenticalOperands:
+  Enabled: true
+
+Lint/DuplicateRescueException:
+  Enabled: true
+
+Lint/EmptyConditionalBody:
+  Enabled: true
+
+Lint/FloatComparison:
+  Enabled: true
+
+Lint/MissingSuper:
+  Enabled: false
+
+Lint/OutOfRangeRegexpRef:
+  Enabled: true
+
+Lint/SelfAssignment:
+  Enabled: true
+
+Lint/TopLevelReturnWithArgument:
+  Enabled: true
+
+Lint/UnreachableLoop:
+  Enabled: true
+
+Lint/DuplicateBranch:
+  Enabled: false
+
+Metrics/AbcSize:
+  Max: 19
+  Exclude:
+    - 'app/controllers/api/v1/recruitment_lps_controller.rb'
+    - 'app/controllers/facilities_controller.rb'
+    - 'app/controllers/search_controller.rb'
+    - 'app/controllers/administer/bills_controller.rb'
+    - 'app/controllers/concerns/footer_settable.rb'
+    - 'app/models/bill.rb'
+    - 'app/decorators/ikou_decorator.rb'
+    - 'app/models/csv_generator.rb'
+    - 'app/models/client_mail_send_log.rb'
+    - 'app/models/xml_sitemap_generator.rb'
+    - 'app/viewmodel/facility_search.rb'
+    - 'app/controllers/biz/facility_support_operation_tools_controller.rb'
+    - 'app/controllers/api/v1/administer/client_send_emails_controller.rb'
+    - 'app/controllers/api/v1/facilities_controller.rb'
+    - 'app/models/recruitment_user_datum.rb'
+
+Metrics/BlockLength:
+  Exclude:
+    - 'app/models/csv_generator.rb'
+    - 'app/models/xml_sitemap_generator.rb'
+    - 'app/controllers/concerns/footer_settable.rb'
+    - 'lib/tasks/auto_annotate_models.rake'
+    - 'lib/tasks/embulk.rake'
+    - 'lib/tasks/develop/generate_contracted_facility.rake'
+    - 'lib/tasks/develop/generate_twilio_test_facility.rake'
+    - 'lib/tasks/restore_backup/db.rake'
+    - 'lib/tasks/setup/setup_facilities.rake'
+    - 'lib/tasks/setup/setup_recruitment_user_data.rake'
+    - 'lib/tasks/setup/generate_ikou_program_tag_industry_occupation.rake'
+    - 'lib/tasks/setup/setup_keizoku_tag.rake'
+    - 'spec/**/*'
+    - 'lib/tasks/send_user_interview_mail.rake'
+    - 'lib/tasks/setup/generate_recruitment_status_record.rake'
+    - 'lib/tasks/setup/import_entry_inquiry_claim_log.rake'
+    - 'lib/tasks/migrate_columns_from_recruitment_to_posting.rake'
+
+Metrics/ClassLength:
+  Max: 108
+  Exclude:
+    - 'lib/tasks/setup/setup_facilities.rake'
+    - 'app/controllers/administer/accounts_controller.rb'
+    - 'app/controllers/facility_listing_controller.rb'
+    - 'app/models/facility.rb'
+    - 'app/models/account.rb'
+    - 'app/models/bill.rb'
+    - 'app/models/corporation.rb'
+    - 'app/models/csv_generator.rb'
+    - 'app/models/inquiry_claim.rb'
+    - 'app/models/user.rb'
+    - 'app/models/article.rb'
+    - 'app/models/inquiry_claim_log.rb'
+    - 'app/decorators/facility_decorator.rb'
+    - 'app/decorators/ikou_decorator.rb'
+    - 'app/controllers/administer/contracts_controller.rb'
+    - 'app/controllers/administer/facilities_controller.rb'
+    - 'app/controllers/application_controller.rb'
+    - 'app/controllers/search_controller.rb'
+    - 'app/controllers/facilities_controller.rb'
+    - 'app/controllers/inquiries_controller.rb'
+    - 'app/viewmodel/facility_search.rb'
+    - 'app/models/contract.rb'
+    - 'app/controllers/administer/facility_support_programs_controller.rb'
+    - 'app/controllers/api/v1/administer/client_send_emails_controller.rb'
+    - 'app/controllers/api/v1/administer/lead_generations_controller.rb'
+    - 'app/controllers/api/v1/recruitment_lps_controller.rb'
+    - 'app/serializers/k_facility_serializer.rb'
+    - 'app/models/keizoku.rb'
+    - 'app/models/recruitment_user_datum.rb'
+    - 'app/models/recruitment.rb'
+    - 'app/models/recruitment_corporation.rb'
+    - 'app/models/hw_recruitment_raw_datum.rb'
+    - 'app/models/recruitment_posting.rb'
+    - 'app/controllers/api/v1/recruitment_department/recruitment_postings_controller.rb'
+
+Metrics/CyclomaticComplexity:
+  Exclude:
+    - 'app/controllers/concerns/footer_settable.rb'
+    - 'app/viewmodel/facility_search.rb'
+    - 'app/controllers/articles_controller.rb'
+    - 'app/controllers/api/v1/contacts_controller.rb'
+    - 'app/models/questionnaire_parser.rb'
+    - 'app/models/web_inquiry.rb'
+    - 'app/models/xml_sitemap_generator.rb'
+    - 'app/controllers/account_sessions_controller.rb'
+    - 'app/models/k_business_hour.rb'
+    - 'app/decorators/facility_decorator.rb'
+
+Metrics/PerceivedComplexity:
+  Exclude:
+    - 'app/controllers/concerns/footer_settable.rb'
+    - 'app/viewmodel/facility_search.rb'
+    - 'app/models/questionnaire_parser.rb'
+    - 'app/models/xml_sitemap_generator.rb'
+
+Metrics/MethodLength:
+  Max: 16
+  Exclude:
+    - 'app/models/csv_generator.rb'
+    - 'app/models/user_datum.rb'
+    - 'app/models/user.rb'
+    - 'app/models/xml_sitemap_generator.rb'
+    - 'app/controllers/concerns/footer_settable.rb'
+    - 'app/controllers/facilities_controller.rb'
+    - 'app/controllers/facility_listing_controller.rb'
+    - 'app/viewmodel/facility_search.rb'
+    - 'app/controllers/inquiries_controller.rb'
+    - 'app/controllers/api/v1/recruitment_lps_controller.rb'
+    - 'app/controllers/api/v1/contacts_controller.rb'
+    - 'app/controllers/api/v1/recruitment_department/recruitment_users_controller.rb'
+    - 'app/controllers/api/v1/facilities_controller.rb'
+    - 'docker/ecs/environments.rb'
+
+Metrics/ModuleLength:
+  Exclude:
+    - 'app/controllers/concerns/footer_settable.rb'
+
+Metrics/ParameterLists:
+  Exclude:
+    - 'app/models/amana_image.rb'
+    - 'app/viewmodel/facility_search.rb'
+
+Naming/FileName:
+  Enabled: false
+
+Rails:
+  Enabled: true
+
+Rails/UnknownEnv:
+  Environments:
+    - development
+    - test
+    - production
+    - staging
+
+Rails/HasManyOrHasOneDependent:
+  Exclude:
+    - 'app/models/contract.rb'
+
+Rails/HelperInstanceVariable:
+  Exclude:
+    - 'app/helpers/account_helper.rb'
+
+# いろいろ調べたけどもどうもrubocopがthroughを発見したらinverse_ofが必要だと判定する根拠が全くわからない
+# → https://github.com/bbatsov/rubocop/pull/5045/files
+# rails guideには「:through関連付けと併用することはできません。」とあるのでthroughならinverse_of付けないはずなんだけど全くわからん
+# https://railsguides.jp/association_basics.html#%E5%8F%8C%E6%96%B9%E5%90%91%E9%96%A2%E9%80%A3%E4%BB%98%E3%81%91
+Rails/InverseOf:
+  Enabled: false
+
+Rails/OutputSafety:
+  Exclude:
+    - 'app/helpers/form_tag_helper.rb'
+
+Rails/FilePath:
+  Enabled: false
+
+Rails/ActiveRecordCallbacksOrder:
+  Enabled: true
+
+Rails/FindById:
+  Enabled: true
+
+Rails/Inquiry:
+  Enabled: true
+
+Rails/MailerName:
+  Enabled: true
+
+Rails/MatchRoute:
+  Enabled: true
+
+Rails/NegateInclude:
+  Enabled: true
+
+Rails/Pluck:
+  Enabled: true
+
+Rails/PluckId:
+  Enabled: true
+
+Rails/PluckInWhere:
+  Enabled: true
+
+Rails/RenderInline:
+  Enabled: true
+
+Rails/RenderPlainText:
+  Enabled: true
+
+Rails/ShortI18n:
+  Enabled: true
+
+Rails/WhereExists:
+  Enabled: true
+
+# TODO: 本来チェックするべきなのでする
+Rails/UniqueValidationWithoutIndex:
+  Enabled: false
+
+# 環境変数の管理方法を考え直す必要があるため、いったんdisabledにする。
+# このcopができた理由に賛同はしているので、いずれenabledにしたい。
+Rails/EnvironmentVariableAccess:
+  Enabled: false
+
+Security/Open:
+  Exclude:
+    - 'lib/tasks/develop/generate_contracted_facility.rake'
+
+Style/AsciiComments:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+Style/EmptyMethod:
+  Enabled: false
+
+Style/FormatStringToken:
+  EnforcedStyle: unannotated
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Style/WordArray:
+  Exclude:
+    - 'spec/models/web_inquiry_spec.rb'
+
+Style/HashEachMethods:
+  Enabled: true
+
+Style/HashTransformKeys:
+  Enabled: true
+
+Style/HashTransformValues:
+  Enabled: true
+
+Style/ExponentialNotation:
+  Enabled: false
+
+Style/SlicingWithRange:
+  Enabled: false
+
+Style/RedundantRegexpCharacterClass:
+  Enabled: true
+
+Style/RedundantRegexpEscape:
+  Enabled: true
+
+Style/RedundantFetchBlock:
+  Enabled: true
+
+Style/AccessorGrouping:
+  Enabled: true
+
+Style/BisectedAttrAccessor:
+  Enabled: true
+
+Style/RedundantAssignment:
+  Enabled: true
+
+Style/ArrayCoercion:
+  Enabled: true
+
+Style/CaseLikeIf:
+  Enabled: true
+
+Style/HashAsLastArrayItem:
+  Enabled: true
+
+Style/HashLikeCase:
+  Enabled: false
+
+Style/RedundantFileExtensionInRequire:
+  Enabled: true
+
+Style/ExplicitBlockArgument:
+  Enabled: true
+
+Style/GlobalStdStream:
+  Enabled: true
+
+Style/OptionalBooleanParameter:
+  Enabled: true
+
+Style/SingleArgumentDig:
+  Enabled: true
+
+Style/StringConcatenation:
+  Enabled: false
+
+Naming/VariableNumber:
+  Enabled: false
