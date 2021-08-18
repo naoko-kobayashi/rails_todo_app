@@ -3,7 +3,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.3'
 
-gem 'factory_bot'
+gem 'factory_bot_rails'
 gem 'mysql2'
 gem 'rename'
 gem 'rspec-rails'
