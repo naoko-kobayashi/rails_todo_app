@@ -1,0 +1,2 @@
+class TodoLabel < ApplicationRecord
+end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_22_072414) do
+ActiveRecord::Schema.define(version: 2021_08_22_073704) do
 
   create_table "labels", charset: "utf8", force: :cascade do |t|
     t.string "name"
@@ -24,6 +24,15 @@ ActiveRecord::Schema.define(version: 2021_08_22_072414) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "todo_labels", charset: "utf8", force: :cascade do |t|
+    t.bigint "todo_id", null: false
+    t.bigint "label_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["label_id"], name: "index_todo_labels_on_label_id"
+    t.index ["todo_id"], name: "index_todo_labels_on_todo_id"
+  end
+
   create_table "todos", charset: "utf8", force: :cascade do |t|
     t.string "title"
     t.boolean "is_checked"
@@ -33,5 +42,7 @@ ActiveRecord::Schema.define(version: 2021_08_22_072414) do
     t.index ["todo_app_id"], name: "index_todos_on_todo_app_id"
   end
 
+  add_foreign_key "todo_labels", "labels"
+  add_foreign_key "todo_labels", "todos"
   add_foreign_key "todos", "todo_apps"
 end
