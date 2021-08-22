@@ -50,8 +50,7 @@ RSpec.describe Todo, type: :model do
       end
 
       context '存在しないtodo appを渡した場合' do
-        example '存在しないcall_staff_idを渡した時' do
-          print todo_app
+        example 'not valid' do
           todo.todo_app_id = todo_app.id + 1
           expect(subject).not_to be_valid
         end

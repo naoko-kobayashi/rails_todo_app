@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :todo_label do
-    todo { "" }
-    label { "" }
+    todo
+    label
   end
 end
